@@ -51,3 +51,18 @@ GET http://localhost:8080/api/population/time-zone-ratio
     "00~06시": 11.4
 }
 ```
+
+- 요일별 유동인구
+
+GET http://localhost:8080/api/population/weekday-ratio
+```json
+{
+    "수요일": 13.7,
+    "화요일": 13.5,
+    "일요일": 13.9,
+    "토요일": 17.1,
+    "목요일": 13.7,
+    "금요일": 15.1,
+    "월요일": 13.0
+}
+```
