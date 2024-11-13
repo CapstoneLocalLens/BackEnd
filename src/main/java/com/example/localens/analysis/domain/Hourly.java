@@ -28,7 +28,7 @@ public class Hourly {
     private Long yearMonth;
 
     @Column(name = "TMZN") // 시간대 컬럼 매핑
-    private String timeZone;
+    private Long timeZone;
 
 
 }

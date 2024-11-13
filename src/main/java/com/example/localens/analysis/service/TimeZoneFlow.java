@@ -33,13 +33,13 @@ public class TimeZoneFlow {
         // 3. 시간대별 유동 인구 합계를 계산하고, 전체 유동 인구 대비 비율을 계산
         Map<String, Double> timeZoneRatio = filteredData.stream()
                 .collect(Collectors.groupingBy(
-                        data -> TimeZoneUtil.getTimeZone(Integer.parseInt(data.getTimeZone())), // 시간대를 구간으로 변환
+                        data -> TimeZoneUtil.getTimeZone(data.getTimeZone().intValue()), // 시간대를 구간으로 변환
                         Collectors.summingDouble(Hourly::getVisitPopulation)
                 ))
                 .entrySet().stream()
                 .collect(Collectors.toMap(
                         Map.Entry::getKey,
-                        entry -> Math.round((entry.getValue() / totalPopulation) * 1000) / 1.0 // 비율로 변환
+                        entry -> Math.round((entry.getValue() / totalPopulation) * 1000) / 10.0 // 비율로 변환
                 ));
 
         return timeZoneRatio;
