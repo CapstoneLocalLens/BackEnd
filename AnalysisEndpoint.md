@@ -202,3 +202,19 @@ ex) http://localhost:8080/api/sales/large-medium-category-ratio/강남상권
     }
 }
 ```
+
+- 업종(대분류)별 매출
+
+GET http://localhost:8080/api/sales/category-ratio/{place}
+
+ex) http://localhost:8080/api/sales/category-ratio/강남상권
+```json
+{
+    "학문/교육": 6.7,
+    "생활서비스": 3.4,
+    "의료/건강": 42.8,
+    "여가/오락": 1.9,
+    "음식": 28.3,
+    "소매/유통": 16.9
+}
+```
