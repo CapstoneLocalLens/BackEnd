@@ -66,3 +66,18 @@ GET http://localhost:8080/api/population/weekday-ratio/강남
   "월요일": 13.4
 }
 ```
+
+- 요일별 매출
+
+GET http://localhost:8080/api/sales/weekday-ratio/강남상권
+```json
+{
+    "화요일": 15.3,
+    "수요일": 14.4,
+    "일요일": 6.7,
+    "토요일": 15.8,
+    "목요일": 14.9,
+    "금요일": 17.8,
+    "월요일": 15.2
+}
+```
