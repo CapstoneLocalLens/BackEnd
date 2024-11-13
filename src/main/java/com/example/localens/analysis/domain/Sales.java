@@ -95,4 +95,15 @@ public class Sales {
 
     @Column(name = "60대이상여성")
     private String female60s;
+
+
+
+    @Column(name = "대분류업종명")
+    private String largeCategory;
+
+    @Column(name = "중분류업종명")
+    private String mediumCategory;
+
+    @Column(name = "매출액")
+    private String salesAmount;
 }

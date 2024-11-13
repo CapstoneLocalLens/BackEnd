@@ -1,5 +1,6 @@
 package com.example.localens.analysis.controller;
 
+import com.example.localens.analysis.service.LMCategorySales;
 import com.example.localens.analysis.service.DowSales;
 import com.example.localens.analysis.service.GenderAgeSales;
 import com.example.localens.analysis.service.TimeSales;
@@ -25,6 +26,9 @@ public class SalesController {
     @Autowired
     private GenderAgeSales genderAgeSales;
 
+    @Autowired
+    private LMCategorySales lMCategorySales;
+
     @GetMapping("/weekday-ratio/{place}")
     public ResponseEntity<Map<String, Double>> getDailySalesRatio(@PathVariable String place) {
         Map<String, Double> salesRatio = dowSales.calculateDailySalesRatio(place);
@@ -41,6 +45,12 @@ public class SalesController {
     public ResponseEntity<Map<String, Map<String, Double>>> getGenderAgeSalesRatio(@PathVariable String place) {
         Map<String, Map<String, Double>> genderAgeSalesRatio = genderAgeSales.calculateGenderAgeSalesRatio(place);
         return ResponseEntity.ok(genderAgeSalesRatio);
+    }
+
+    @GetMapping("/large-medium-category-ratio/{place}")
+    public ResponseEntity<Map<String, Map<String, Double>>> getCategorySalesRatioByPlace(@PathVariable String place) {
+        Map<String, Map<String, Double>> categorySalesRatio = lMCategorySales.calculateCategorySalesRatioByPlace(place);
+        return ResponseEntity.ok(categorySalesRatio);
     }
 
 }
