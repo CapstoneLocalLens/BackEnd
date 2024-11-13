@@ -41,6 +41,8 @@ public class Sales {
     @Column(name = "일요일")
     private String sun;
 
+
+
     @Column(name = "06~09시")
     private String time0609;
 
@@ -61,4 +63,36 @@ public class Sales {
 
     @Column(name = "24~06시")
     private String time2406;
+
+
+
+    @Column(name = "20대남성")
+    private String male20s;
+
+    @Column(name = "20대여성")
+    private String female20s;
+
+    @Column(name = "30대남성")
+    private String male30s;
+
+    @Column(name = "30대여성")
+    private String female30s;
+
+    @Column(name = "40대남성")
+    private String male40s;
+
+    @Column(name = "40대여성")
+    private String female40s;
+
+    @Column(name = "50대남성")
+    private String male50s;
+
+    @Column(name = "50대여성")
+    private String female50s;
+
+    @Column(name = "60대이상남성")
+    private String male60s;
+
+    @Column(name = "60대이상여성")
+    private String female60s;
 }

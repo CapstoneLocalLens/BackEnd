@@ -1,6 +1,7 @@
 package com.example.localens.analysis.controller;
 
 import com.example.localens.analysis.service.DowSales;
+import com.example.localens.analysis.service.GenderAgeSales;
 import com.example.localens.analysis.service.TimeSales;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -21,6 +22,9 @@ public class SalesController {
     @Autowired
     private TimeSales timeSales;
 
+    @Autowired
+    private GenderAgeSales genderAgeSales;
+
     @GetMapping("/weekday-ratio/{place}")
     public ResponseEntity<Map<String, Double>> getDailySalesRatio(@PathVariable String place) {
         Map<String, Double> salesRatio = dowSales.calculateDailySalesRatio(place);
@@ -31,6 +35,12 @@ public class SalesController {
     public ResponseEntity<Map<String, Double>> getTimeSalesRatio(@PathVariable String place) {
         Map<String, Double> timeSalesRatio = timeSales.calculateTimeSalesRatio(place);
         return ResponseEntity.ok(timeSalesRatio);
+    }
+
+    @GetMapping("/gender-age-ratio/{place}")
+    public ResponseEntity<Map<String, Map<String, Double>>> getGenderAgeSalesRatio(@PathVariable String place) {
+        Map<String, Map<String, Double>> genderAgeSalesRatio = genderAgeSales.calculateGenderAgeSalesRatio(place);
+        return ResponseEntity.ok(genderAgeSalesRatio);
     }
 
 }
