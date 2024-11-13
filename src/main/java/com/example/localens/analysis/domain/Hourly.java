@@ -24,8 +24,11 @@ public class Hourly {
     @Column(name = "AGE_GROUP") // 연령대 컬럼 매핑
     private String ageGroup;
 
+    @Column(name = "VISIT_MIN_POPL") // 해당 시간대에 방문한 인구 수 컬럼 매핑
+    private Double visitMinPopulation;
+
     @Column(name = "VISIT_POPL") // 유동 인구 컬럼 매핑
-    private double visitPopulation;
+    private Double visitPopulation;
 
     @Column(name = "P_YYYYMM") // 연도와 월을 나타내는 컬럼 매핑
     private Long yearMonth;

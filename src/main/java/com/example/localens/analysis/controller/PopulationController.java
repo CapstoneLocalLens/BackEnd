@@ -40,4 +40,9 @@ public class PopulationController {
         return dayOfWeekFlow.getWeekdayPopulationRatio(place);
     }
 
+    @GetMapping("/time-zone-population-ratio/{place}")
+    public Map<String, Map<String, Double>> getTimeZonePopulationRatio(@PathVariable String place) {
+        return timeZoneFlow.getTimeZonePopulationRatio(place);
+    }
+
 }
