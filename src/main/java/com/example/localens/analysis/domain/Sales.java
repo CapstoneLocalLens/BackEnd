@@ -41,4 +41,24 @@ public class Sales {
     @Column(name = "일요일")
     private String sun;
 
+    @Column(name = "06~09시")
+    private String time0609;
+
+    @Column(name = "09~12시")
+    private String time0912;
+
+    @Column(name = "12~15시")
+    private String time1215;
+
+    @Column(name = "15~18시")
+    private String time1518;
+
+    @Column(name = "18~21시")
+    private String time1821;
+
+    @Column(name = "21~24시")
+    private String time2124;
+
+    @Column(name = "24~06시")
+    private String time2406;
 }
