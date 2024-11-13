@@ -15,10 +15,10 @@ public class GenderAge {
     @Autowired
     private PopulationRepository populationRepository;
 
-    public Map<String, Map<String, Double>> getGenderAgeRatios() {
+    public Map<String, Map<String, Double>> getGenderAgeRatios(String place) {
         // 1. 데이터 필터링: 2024년 4월 ~ 6월 (2024년 2분기) 데이터만 사용
         List<Hourly> filteredData = populationRepository.findAll().stream()
-                .filter(data -> data.getYearMonth() >= 202404 && data.getYearMonth() <= 202406)
+                .filter(data -> data.getYearMonth() >= 202404 && data.getYearMonth() <= 202406 && data.getPlace().equals(place))
                 .collect(Collectors.toList());
 
         // 2. 성별 총 인구 수 계산

@@ -5,6 +5,7 @@ import com.example.localens.analysis.service.GenderAge;
 import com.example.localens.analysis.service.TimeZoneFlow;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -24,19 +25,19 @@ public class PopulationController {
     private DayOfWeekFlow dayOfWeekFlow;
 
 
-    @GetMapping("/gender-age-ratio")
-    public Map<String, Map<String, Double>> getGenderAgeRatio() {
-        return genderAge.getGenderAgeRatios();
+    @GetMapping("/gender-age-ratio/{place}")
+    public Map<String, Map<String, Double>> getGenderAgeRatio(@PathVariable String place) {
+        return genderAge.getGenderAgeRatios(place);
     }
 
-    @GetMapping("/time-zone-ratio")
-    public Map<String, Double> getTimeZoneRatio() {
-        return timeZoneFlow.getTimeZoneRatio();
+    @GetMapping("/time-zone-ratio/{place}")
+    public Map<String, Double> getTimeZoneRatio(@PathVariable String place) {
+        return timeZoneFlow.getTimeZoneRatio(place);
     }
 
-    @GetMapping("/weekday-ratio")
-    public Map<String, Double> getWeekdayPopulationRatio() {
-        return dayOfWeekFlow.getWeekdayPopulationRatio();
+    @GetMapping("/weekday-ratio/{place}")
+    public Map<String, Double> getWeekdayPopulationRatio(@PathVariable String place) {
+        return dayOfWeekFlow.getWeekdayPopulationRatio(place);
     }
 
 }

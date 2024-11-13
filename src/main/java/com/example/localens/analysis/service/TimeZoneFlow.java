@@ -16,12 +16,12 @@ public class TimeZoneFlow {
     @Autowired
     private PopulationRepository populationRepository;
 
-    public Map<String, Double> getTimeZoneRatio() {
+    public Map<String, Double> getTimeZoneRatio(String place) {
         // 1. 데이터 필터링: 2024년 4월 ~ 6월 데이터만 사용
         List<Hourly> filteredData = populationRepository.findAll().stream()
                 .filter(data -> {
                     Long yearMonth = data.getYearMonth();
-                    return yearMonth >= 202404 && yearMonth <= 202406;
+                    return yearMonth >= 202404 && yearMonth <= 202406 && data.getPlace().equals(place);
                 })
                 .collect(Collectors.toList());
 

@@ -15,6 +15,9 @@ public class Hourly {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @Column(name = "PLACE")
+    private String place;
+
     @Column(name = "SEX_DV_CD") // 성별 컬럼 매핑
     private String gender;
 
