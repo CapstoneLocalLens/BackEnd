@@ -30,5 +30,7 @@ public class Hourly {
     @Column(name = "TMZN") // 시간대 컬럼 매핑
     private Long timeZone;
 
+    @Column(name = "DOW") // 요일 컬럼 매핑
+    private String dow;
 
 }
