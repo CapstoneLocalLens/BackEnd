@@ -1,6 +1,8 @@
 - 성별, 연령별 유동인구
 
-GET http://localhost:8080/api/population/gender-age-ratio/강남
+GET http://localhost:8080/api/population/gender-age-ratio/{place}
+
+ex) http://localhost:8080/api/population/gender-age-ratio/강남
 ```json
 {
   "70대 이상": {
@@ -40,7 +42,9 @@ GET http://localhost:8080/api/population/gender-age-ratio/강남
 
 - 시간대별 유동인구
 
-GET http://localhost:8080/api/population/time-zone-ratio/강남
+GET http://localhost:8080/api/population/time-zone-ratio/{place}
+
+ex) http://localhost:8080/api/population/time-zone-ratio/강남
 ```json
 {
   "11~14시": 18.1,
@@ -54,7 +58,9 @@ GET http://localhost:8080/api/population/time-zone-ratio/강남
 
 - 요일별 유동인구
 
-GET http://localhost:8080/api/population/weekday-ratio/강남
+GET http://localhost:8080/api/population/weekday-ratio/{place}
+
+ex) http://localhost:8080/api/population/weekday-ratio/강남
 ```json
 {
   "화요일": 14.4,
@@ -69,7 +75,9 @@ GET http://localhost:8080/api/population/weekday-ratio/강남
 
 - 요일별 매출
 
-GET http://localhost:8080/api/sales/weekday-ratio/강남상권
+GET http://localhost:8080/api/sales/weekday-ratio/{place}
+
+ex) http://localhost:8080/api/sales/weekday-ratio/강남상권
 ```json
 {
     "화요일": 15.3,
@@ -84,7 +92,9 @@ GET http://localhost:8080/api/sales/weekday-ratio/강남상권
 
 - 시간대별 매출
 
-GET http://localhost:8080/api/sales/time-ratio/강남상권
+GET http://localhost:8080/api/sales/time-ratio/{place}
+
+ex) http://localhost:8080/api/sales/time-ratio/강남상권
 ```json
 {
     "09~12시": 19.0,
