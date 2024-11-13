@@ -73,6 +73,46 @@ ex) http://localhost:8080/api/population/weekday-ratio/강남
 }
 ```
 
+- 시간대별 유입, 체류 비율
+
+GET http://localhost:8080/api/population/time-zone-population-ratio/{place}
+
+ex) http://localhost:8080/api/population/time-zone-population-ratio/강남
+```json
+{
+    "11~14시": {
+        "visitMinPopulationRatio": 32.0,
+        "previouslyStayedPopulationRatio": 68.0,
+        "totalPopulationRatio": 18.1
+    },
+    "21~24시": {
+        "visitMinPopulationRatio": 12.7,
+        "previouslyStayedPopulationRatio": 87.3,
+        "totalPopulationRatio": 12.5
+    },
+    "06~11시": {
+        "visitMinPopulationRatio": 37.9,
+        "previouslyStayedPopulationRatio": 62.1,
+        "totalPopulationRatio": 11.9
+    },
+    "17~21시": {
+        "visitMinPopulationRatio": 26.9,
+        "previouslyStayedPopulationRatio": 73.1,
+        "totalPopulationRatio": 29.0
+    },
+    "14~17시": {
+        "visitMinPopulationRatio": 27.0,
+        "previouslyStayedPopulationRatio": 73.0,
+        "totalPopulationRatio": 19.9
+    },
+    "00~06시": {
+        "visitMinPopulationRatio": 31.9,
+        "previouslyStayedPopulationRatio": 68.1,
+        "totalPopulationRatio": 8.7
+    }
+}
+```
+
 - 요일별 매출
 
 GET http://localhost:8080/api/sales/weekday-ratio/{place}
