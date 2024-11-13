@@ -1,9 +1,6 @@
 package com.example.localens.analysis.controller;
 
-import com.example.localens.analysis.service.LMCategorySales;
-import com.example.localens.analysis.service.DowSales;
-import com.example.localens.analysis.service.GenderAgeSales;
-import com.example.localens.analysis.service.TimeSales;
+import com.example.localens.analysis.service.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -29,6 +26,9 @@ public class SalesController {
     @Autowired
     private LMCategorySales lMCategorySales;
 
+    @Autowired
+    private CategorySales categorySales;
+
     @GetMapping("/weekday-ratio/{place}")
     public ResponseEntity<Map<String, Double>> getDailySalesRatio(@PathVariable String place) {
         Map<String, Double> salesRatio = dowSales.calculateDailySalesRatio(place);
@@ -51,6 +51,12 @@ public class SalesController {
     public ResponseEntity<Map<String, Map<String, Double>>> getCategorySalesRatioByPlace(@PathVariable String place) {
         Map<String, Map<String, Double>> categorySalesRatio = lMCategorySales.calculateCategorySalesRatioByPlace(place);
         return ResponseEntity.ok(categorySalesRatio);
+    }
+
+    @GetMapping("/category-ratio/{place}")
+    public ResponseEntity<Map<String, Double>> getLargeCategorySalesRatioByPlace(@PathVariable String place) {
+        Map<String, Double> largeCategorySalesRatio = categorySales.calculateLargeCategorySalesRatioByPlace(place);
+        return ResponseEntity.ok(largeCategorySalesRatio);
     }
 
 }
