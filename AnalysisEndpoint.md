@@ -38,3 +38,16 @@ GET http://localhost:8080/api/population/gender-age-ratio
 }
 ```
 
+- 시간대별 유동인구
+
+GET http://localhost:8080/api/population/time-zone-ratio
+```json
+{
+    "11~14시": 17.3,
+    "21~24시": 12.0,
+    "06~11시": 12.3,
+    "17~21시": 27.5,
+    "14~17시": 19.6,
+    "00~06시": 11.4
+}
+```
