@@ -27,5 +27,8 @@ public class Hourly {
     @Column(name = "P_YYYYMM") // 연도와 월을 나타내는 컬럼 매핑
     private Long yearMonth;
 
+    @Column(name = "TMZN") // 시간대 컬럼 매핑
+    private String timeZone;
+
 
 }
