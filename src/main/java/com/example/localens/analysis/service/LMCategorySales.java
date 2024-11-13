@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.stream.Collectors;
 
 @Service
 public class LMCategorySales {
@@ -17,14 +18,19 @@ public class LMCategorySales {
 
     public Map<String, Map<String, Double>> calculateCategorySalesRatioByPlace(String place) {
         // 주어진 상권에 해당하는 매출 데이터 조회
-        List<Sales> salesList = salesRepository.findByPlace(place);
+        List<Sales> filteredSalesList = salesRepository.findByPlace(place).stream()
+                .filter(sales -> {
+                    Long yearMonth = sales.getYearMonth();
+                    return yearMonth >= 202404 && yearMonth <= 202406;
+                })
+                .collect(Collectors.toList());
 
         // 대분류업종별 총 매출과 중분류업종 매출을 저장할 Map 초기화
         Map<String, Long> largeCategorySalesSum = new HashMap<>();
         Map<String, Map<String, Long>> mediumCategorySalesSum = new HashMap<>();
 
         // 매출 데이터를 기반으로 대분류 및 중분류 매출 누적
-        for (Sales sales : salesList) {
+        for (Sales sales : filteredSalesList) {
             String largeCategory = sales.getLargeCategory();
             String mediumCategory = sales.getMediumCategory();
             Long salesAmount = Long.parseLong(sales.getSalesAmount().replace(",", "").trim());

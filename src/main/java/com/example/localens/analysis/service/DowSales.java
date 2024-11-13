@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.stream.Collectors;
 
 @Service
 public class DowSales {
@@ -16,7 +17,13 @@ public class DowSales {
     private SalesRepository salesRepository;
 
     public Map<String, Double> calculateDailySalesRatio(String place) {
-        List<Sales> salesList = salesRepository.findByPlace(place);
+        List<Sales> filteredSalesList = salesRepository.findByPlace(place).stream()
+                .filter(sales -> {
+                    Long yearMonth = sales.getYearMonth();
+                    return yearMonth >= 202404 && yearMonth <= 202406;
+                })
+                .collect(Collectors.toList());
+
         Map<String, Long> dailySalesSum = new HashMap<>();
         long totalSales = 0;
 
@@ -30,7 +37,7 @@ public class DowSales {
         dailySalesSum.put("일요일", 0L);
 
         // 각 요일별 매출을 누적하여 합산
-        for (Sales sales : salesList) {
+        for (Sales sales : filteredSalesList) {
             dailySalesSum.put("월요일", dailySalesSum.get("월요일") + Long.parseLong(sales.getMon().replace(",", "").trim()));
             dailySalesSum.put("화요일", dailySalesSum.get("화요일") + Long.parseLong(sales.getTue().replace(",", "").trim()));
             dailySalesSum.put("수요일", dailySalesSum.get("수요일") + Long.parseLong(sales.getWed().replace(",", "").trim()));

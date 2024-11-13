@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.stream.Collectors;
 
 @Service
 public class TimeSales {
@@ -16,7 +17,12 @@ public class TimeSales {
     private SalesRepository salesRepository;
 
     public Map<String, Double> calculateTimeSalesRatio(String place) {
-        List<Sales> salesList = salesRepository.findByPlace(place);
+        List<Sales> filteredSalesList = salesRepository.findByPlace(place).stream()
+                .filter(sales -> {
+                    Long yearMonth = sales.getYearMonth();
+                    return yearMonth >= 202404 && yearMonth <= 202406;
+                })
+                .collect(Collectors.toList());
         Map<String, Long> timeSalesSum = new HashMap<>();
         long totalSales = 0;
 
@@ -30,7 +36,7 @@ public class TimeSales {
         timeSalesSum.put("24~06시", 0L);
 
         // 각 시간대별 매출을 누적하여 합산
-        for (Sales sales : salesList) {
+        for (Sales sales : filteredSalesList) {
             timeSalesSum.put("06~09시", timeSalesSum.get("06~09시") + Long.parseLong(sales.getTime0609().replace(",", "").trim()));
             timeSalesSum.put("09~12시", timeSalesSum.get("09~12시") + Long.parseLong(sales.getTime0912().replace(",", "").trim()));
             timeSalesSum.put("12~15시", timeSalesSum.get("12~15시") + Long.parseLong(sales.getTime1215().replace(",", "").trim()));

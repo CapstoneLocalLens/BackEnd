@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.stream.Collectors;
 
 @Service
 public class GenderAgeSales {
@@ -16,7 +17,12 @@ public class GenderAgeSales {
     private SalesRepository salesRepository;
 
     public Map<String, Map<String, Double>> calculateGenderAgeSalesRatio(String place) {
-        List<Sales> salesList = salesRepository.findByPlace(place);
+        List<Sales> filteredSalesList = salesRepository.findByPlace(place).stream()
+                .filter(sales -> {
+                    Long yearMonth = sales.getYearMonth();
+                    return yearMonth >= 202404 && yearMonth <= 202406;
+                })
+                .collect(Collectors.toList());
 
         Map<String, Long> maleSalesSum = new HashMap<>();
         Map<String, Long> femaleSalesSum = new HashMap<>();
@@ -31,7 +37,7 @@ public class GenderAgeSales {
         }
 
         // 연령대별 매출을 누적하여 합산
-        for (Sales sales : salesList) {
+        for (Sales sales : filteredSalesList) {
             maleSalesSum.put("20대", maleSalesSum.get("20대") + Long.parseLong(sales.getMale20s().replace(",", "").trim()));
             femaleSalesSum.put("20대", femaleSalesSum.get("20대") + Long.parseLong(sales.getFemale20s().replace(",", "").trim()));
             maleSalesSum.put("30대", maleSalesSum.get("30대") + Long.parseLong(sales.getMale30s().replace(",", "").trim()));
