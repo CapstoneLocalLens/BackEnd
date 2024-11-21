@@ -32,10 +32,17 @@ public class DistrictController {
     }
 
     // 체류/방문 비율 평균값 조회
-    @GetMapping("/{districtName}/average-stay-to-visit-ratio/{districtName}")
+    @GetMapping("/average-stay-to-visit-ratio/{districtName}")
     public ResponseEntity<Double> getAverageStayToVisitRatio(@PathVariable String districtName) {
         double averageRatio = districtService.calculateAverageStayToVisitRatio(districtName, "202309", "202408");
         return ResponseEntity.ok(averageRatio);
+    }
+
+    // 체류시간 대비 방문자 수 평균값 조회
+    @GetMapping("/average-stay-time-per-visitor/{districtName}")
+    public ResponseEntity<Double> getAverageStayTimePerVisitor(@PathVariable String districtName) {
+        double averageStayTime = districtService.calculateAverageStayTimePerVisitor(districtName, "202309", "202408");
+        return ResponseEntity.ok(averageStayTime);
     }
 }
 

@@ -51,5 +51,17 @@ public class DistrictService {
                 .orElse(0.0);
     }
 
+    // 체류시간 대비 방문자 수 평균값 계산
+    public double calculateAverageStayTimePerVisitor(String districtName, String startDate, String endDate) {
+        List<Double> stayTimes = districtMetricsRepository.findAverageStayTimePerVisitorByCommercialDistrict_DistrictNameAndMetricDateBetween(
+                districtName, startDate, endDate
+        );
+
+        return stayTimes.stream()
+                .mapToDouble(Double::doubleValue)
+                .average()
+                .orElse(0.0);
+    }
+
 }
 

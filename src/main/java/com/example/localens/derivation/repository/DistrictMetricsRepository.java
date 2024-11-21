@@ -25,5 +25,10 @@ public interface DistrictMetricsRepository extends JpaRepository<DistrictMetrics
             String districtName, String startDate, String endDate
     );
 
+    // 체류시간 대비 방문자 수 조회
+    List<Double> findAverageStayTimePerVisitorByCommercialDistrict_DistrictNameAndMetricDateBetween(
+            String districtName, String startDate, String endDate
+    );
+
 }
 
