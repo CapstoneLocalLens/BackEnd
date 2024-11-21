@@ -22,8 +22,11 @@ public class DistrictMetrics {
     @Column(name = "congestion_change_rate")
     private Double congestionChangeRate;
 
-    @Column(name = "population_avg", nullable = false)
+    @Column(name = "population_avg")
     private Double populationAvg;
+
+    @Column(name = "stay_to_visit_ratio", nullable = false)
+    private Double stayToVisitRatio;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "district_uuid")

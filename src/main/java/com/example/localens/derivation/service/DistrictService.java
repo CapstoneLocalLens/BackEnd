@@ -39,5 +39,17 @@ public class DistrictService {
                 .orElse(0.0);
     }
 
+    // 체류/방문 비율 평균값 계산
+    public double calculateAverageStayToVisitRatio(String districtName, String startDate, String endDate) {
+        List<Double> stayToVisitRatios = districtMetricsRepository.findStayToVisitRatioByCommercialDistrict_DistrictNameAndMetricDateBetween(
+                districtName, startDate, endDate
+        );
+
+        return stayToVisitRatios.stream()
+                .mapToDouble(Double::doubleValue)
+                .average()
+                .orElse(0.0);
+    }
+
 }
 

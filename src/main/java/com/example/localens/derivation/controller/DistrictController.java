@@ -30,5 +30,12 @@ public class DistrictController {
         double averagePopulation = districtService.calculateAveragePopulation(districtName, "202309", "202408");
         return ResponseEntity.ok(averagePopulation);
     }
+
+    // 체류/방문 비율 평균값 조회
+    @GetMapping("/{districtName}/average-stay-to-visit-ratio/{districtName}")
+    public ResponseEntity<Double> getAverageStayToVisitRatio(@PathVariable String districtName) {
+        double averageRatio = districtService.calculateAverageStayToVisitRatio(districtName, "202309", "202408");
+        return ResponseEntity.ok(averageRatio);
+    }
 }
 
