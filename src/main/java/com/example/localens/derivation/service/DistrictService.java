@@ -75,5 +75,17 @@ public class DistrictService {
                 .orElse(0.0);
     }
 
+    // 평균 체류시간 변화율 평균값 계산
+    public double calculateAverageStayTimeChangeRate(String districtName, String startDate, String endDate) {
+        List<Double> stayTimeChangeRates = districtMetricsRepository.findAverageStayTimeChangeRateByCommercialDistrict_DistrictNameAndMetricDateBetween(
+                districtName, startDate, endDate
+        );
+
+        return stayTimeChangeRates.stream()
+                .mapToDouble(Double::doubleValue)
+                .average()
+                .orElse(0.0);
+    }
+
 }
 

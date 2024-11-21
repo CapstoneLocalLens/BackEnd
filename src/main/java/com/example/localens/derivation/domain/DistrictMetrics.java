@@ -31,8 +31,11 @@ public class DistrictMetrics {
     @Column(name = "average_stay_time_per_visitor")
     private Double averageStayTimePerVisitor;
 
-    @Column(name = "visit_concentration", nullable = false)
+    @Column(name = "visit_concentration")
     private Double visitConcentration;
+
+    @Column(name = "average_stay_time_change_rate")
+    private Double averageStayTimeChangeRate;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "district_uuid")

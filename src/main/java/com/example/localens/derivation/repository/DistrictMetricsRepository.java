@@ -35,5 +35,10 @@ public interface DistrictMetricsRepository extends JpaRepository<DistrictMetrics
             String districtName, String startDate, String endDate
     );
 
+    // 평균 체류시간 변화율 조회
+    List<Double> findAverageStayTimeChangeRateByCommercialDistrict_DistrictNameAndMetricDateBetween(
+            String districtName, String startDate, String endDate
+    );
+
 }
 

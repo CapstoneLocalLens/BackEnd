@@ -52,6 +52,13 @@ public class DistrictController {
         return ResponseEntity.ok(averageConcentration);
     }
 
+    // 평균 체류시간 변화율 평균값 조회
+    @GetMapping("/average-stay-time-change-rate/{districtName}")
+    public ResponseEntity<Double> getAverageStayTimeChangeRate(@PathVariable String districtName) {
+        double averageChangeRate = districtService.calculateAverageStayTimeChangeRate(districtName, "202309", "202408");
+        return ResponseEntity.ok(averageChangeRate);
+    }
+
 
 }
 
