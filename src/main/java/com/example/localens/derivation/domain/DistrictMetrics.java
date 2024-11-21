@@ -13,7 +13,6 @@ import java.util.UUID;
 public class DistrictMetrics {
 
     @Id
-<<<<<<< HEAD
     @Column(name = "feature_uuid")
     private UUID featureUuid;
 
@@ -28,19 +27,6 @@ public class DistrictMetrics {
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "district_uuid")
-=======
-    @Column(name = "feature_uuid", nullable = false)
-    private UUID featureUuid;
-
-    @Column(name = "metric_date", nullable = false)
-    private String metricDate;
-
-    @Column(name = "congestion_change_rate", nullable = false)
-    private Double congestionChangeRate;
-
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "district_uuid", nullable = false)
->>>>>>> acb3bfe37c4e01a70d61b1516934b9dc9460a47b
     private CommercialDistrict commercialDistrict;
 
 }

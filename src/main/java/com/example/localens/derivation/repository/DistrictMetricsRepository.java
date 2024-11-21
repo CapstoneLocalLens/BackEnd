@@ -15,5 +15,10 @@ public interface DistrictMetricsRepository extends JpaRepository<DistrictMetrics
             String districtName, String startDate, String endDate
     );
 
+    // 특정 상권 이름과 날짜 범위 -> 유동인구 수(population_avg) 조회
+    List<Double> findPopulationAvgByCommercialDistrict_DistrictNameAndMetricDateBetween(
+            String districtName, String startDate, String endDate
+    );
+
 }
 
