@@ -44,5 +44,14 @@ public class DistrictController {
         double averageStayTime = districtService.calculateAverageStayTimePerVisitor(districtName, "202309", "202408");
         return ResponseEntity.ok(averageStayTime);
     }
+
+    // 방문 집중도 평균값 조회
+    @GetMapping("/average-visit-concentration/{districtName}")
+    public ResponseEntity<Double> getAverageVisitConcentration(@PathVariable String districtName) {
+        double averageConcentration = districtService.calculateAverageVisitConcentration(districtName, "202309", "202408");
+        return ResponseEntity.ok(averageConcentration);
+    }
+
+
 }
 

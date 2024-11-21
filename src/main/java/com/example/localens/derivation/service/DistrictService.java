@@ -63,5 +63,17 @@ public class DistrictService {
                 .orElse(0.0);
     }
 
+    // 방문 집중도 평균값 계산
+    public double calculateAverageVisitConcentration(String districtName, String startDate, String endDate) {
+        List<Double> visitConcentrations = districtMetricsRepository.findVisitConcentrationByCommercialDistrict_DistrictNameAndMetricDateBetween(
+                districtName, startDate, endDate
+        );
+
+        return visitConcentrations.stream()
+                .mapToDouble(Double::doubleValue)
+                .average()
+                .orElse(0.0);
+    }
+
 }
 

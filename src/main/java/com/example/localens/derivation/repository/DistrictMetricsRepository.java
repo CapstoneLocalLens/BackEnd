@@ -30,5 +30,10 @@ public interface DistrictMetricsRepository extends JpaRepository<DistrictMetrics
             String districtName, String startDate, String endDate
     );
 
+    // 방문 집중도 조회
+    List<Double> findVisitConcentrationByCommercialDistrict_DistrictNameAndMetricDateBetween(
+            String districtName, String startDate, String endDate
+    );
+
 }
 
