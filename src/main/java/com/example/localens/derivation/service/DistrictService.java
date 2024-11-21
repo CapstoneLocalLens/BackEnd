@@ -27,6 +27,5 @@ public class DistrictService {
                 .orElse(0.0); // 데이터가 없을 경우 0.0 반환
     }
 
-
 }
 

@@ -15,6 +15,5 @@ public interface DistrictMetricsRepository extends JpaRepository<DistrictMetrics
             String districtName, String startDate, String endDate
     );
 
-
 }
 
