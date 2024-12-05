@@ -20,7 +20,7 @@ public class RadarComparisonService {
         // 차이를 계산
         Map<String, Double> differences = new HashMap<>();
         for (String key : district1Overall.keySet()) {
-            double diff = Math.abs(district1Overall.get(key) - district2Overall.get(key));
+            double diff = district2Overall.get(key) - district1Overall.get(key);
             differences.put(key, diff);
         }
 
